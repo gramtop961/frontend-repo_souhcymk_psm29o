@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 export default function Pricing() {
   return (
     <section id="pricing" className="relative py-20">
@@ -10,7 +12,13 @@ export default function Pricing() {
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {/* Starter */}
-          <div className="rounded-xl border border-orange-200 bg-white p-6 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-orange-200 bg-white p-6 flex flex-col"
+          >
             <div className="text-sm font-medium text-orange-700">Starter</div>
             <div className="mt-2 text-4xl font-semibold text-stone-900">$0</div>
             <div className="text-stone-500">up to 50 rentals/mo</div>
@@ -20,10 +28,16 @@ export default function Pricing() {
               <li>Basic reporting</li>
             </ul>
             <a href="#" className="mt-6 inline-flex justify-center rounded-md border border-orange-200 px-4 py-2 hover:bg-orange-50">Get started</a>
-          </div>
+          </motion.div>
 
           {/* Pro */}
-          <div className="rounded-xl border-2 border-orange-500 bg-gradient-to-br from-orange-50 to-amber-50 p-6 shadow-sm flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border-2 border-orange-500 bg-gradient-to-br from-orange-50 to-amber-50 p-6 shadow-sm flex flex-col"
+          >
             <div className="inline-flex w-min whitespace-nowrap rounded-full bg-orange-500 px-2 py-0.5 text-xs text-white">Best for most</div>
             <div className="mt-2 text-4xl font-semibold text-stone-900">$49</div>
             <div className="text-stone-500">up to 500 rentals/mo</div>
@@ -35,10 +49,16 @@ export default function Pricing() {
               <li>Priority support</li>
             </ul>
             <a href="#" className="mt-6 inline-flex justify-center rounded-md bg-gradient-to-r from-orange-500 to-orange-600 px-4 py-2 text-white shadow hover:shadow-md">Start free trial</a>
-          </div>
+          </motion.div>
 
           {/* Scale */}
-          <div className="rounded-xl border border-orange-200 bg-white p-6 flex flex-col">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-xl border border-orange-200 bg-white p-6 flex flex-col"
+          >
             <div className="text-sm font-medium text-orange-700">Scale</div>
             <div className="mt-2 text-4xl font-semibold text-stone-900">$149</div>
             <div className="text-stone-500">unlimited rentals</div>
@@ -49,14 +69,21 @@ export default function Pricing() {
               <li>Dedicated support</li>
             </ul>
             <a href="#" className="mt-6 inline-flex justify-center rounded-md border border-orange-200 px-4 py-2 hover:bg-orange-50">Talk to sales</a>
-          </div>
+          </motion.div>
         </div>
 
-        <div id="contact" className="mt-16 rounded-xl border border-orange-200 bg-white p-6 text-center">
+        <motion.div
+          id="contact"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="mt-16 rounded-xl border border-orange-200 bg-white p-6 text-center"
+        >
           <p className="text-stone-700">
             Have questions? Email us at <a className="text-orange-700 underline" href="mailto:hello@rentpos.app">hello@rentpos.app</a>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -10,14 +10,12 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Background washes */}
       <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-amber-100 pointer-events-none" />
       <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-orange-200/40 blur-3xl pointer-events-none" />
       <div className="absolute -bottom-24 -left-24 h-80 w-80 rounded-full bg-orange-300/30 blur-3xl pointer-events-none" />
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left column: Text + CTAs */}
           <div>
             <motion.span
               variants={fadeUp}
@@ -92,20 +90,17 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column: 3D Spline scene with floating UI card */}
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl border border-orange-200/70 bg-white/60 backdrop-blur-sm shadow-sm h-[420px] sm:h-[480px] lg:h-[560px]">
               <Spline
-                scene="https://prod.spline.design/4cHQr84zOGAHOehh/scene.splinecode"
+                scene="https://prod.spline.design/41MGRk-UDPKO-l6W/scene.splinecode"
                 style={{ width: "100%", height: "100%" }}
               />
 
-              {/* Soft radial glow to blend with brand colors (doesn't block interactions) */}
               <div className="pointer-events-none absolute inset-0">
                 <div className="absolute left-1/2 top-1/2 h-[120%] w-[120%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_center,rgba(255,159,67,0.18),transparent_60%)]" />
               </div>
 
-              {/* Floating rental UI preview card */}
               <motion.div
                 initial={{ opacity: 0, y: 20, scale: 0.98 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
