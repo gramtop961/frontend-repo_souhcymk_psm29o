@@ -22,7 +22,7 @@ export default function Hero() {
               initial="hidden"
               animate="visible"
               className="inline-flex items-center gap-2 rounded-full bg-orange-100 text-orange-700 px-3 py-1 text-xs font-medium border border-orange-200"
-            >
+           >
               <Rocket size={14} />
               Purpose-built for rental businesses
             </motion.span>
@@ -93,7 +93,7 @@ export default function Hero() {
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl border border-orange-200/70 bg-white/60 backdrop-blur-sm shadow-sm h-[420px] sm:h-[480px] lg:h-[560px]">
               <Spline
-                scene="https://prod.spline.design/41MGRk-UDPKO-l6W/scene.splinecode"
+                scene="https://prod.spline.design/UngO8SNLfLcyPG7O/scene.splinecode"
                 style={{ width: "100%", height: "100%" }}
               />
 

@@ -1,17 +1,32 @@
 import { Menu, X, ShoppingCart, User } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [elevated, setElevated] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setElevated(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const navItems = [
     { label: "Features", href: "#features" },
+    { label: "How it works", href: "#how" },
+    { label: "Testimonials", href: "#testimonials" },
     { label: "Pricing", href: "#pricing" },
-    { label: "Contact", href: "#contact" },
+    { label: "FAQ", href: "#faq" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-orange-100">
+    <header
+      className={`sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/70 border-b border-orange-100 transition-shadow ${
+        elevated ? "shadow-[0_6px_20px_rgba(255,159,67,0.15)]" : ""
+      }`}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center gap-2">
@@ -49,29 +64,38 @@ export default function Navbar() {
           </button>
         </div>
 
-        {open && (
-          <div className="md:hidden pb-4">
-            <div className="flex flex-col gap-2">
-              {navItems.map((item) => (
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              key="mobile"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+              className="md:hidden pb-4"
+            >
+              <div className="flex flex-col gap-2">
+                {navItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    className="rounded-md px-3 py-2 text-stone-700 hover:bg-orange-50"
+                    onClick={() => setOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ))}
                 <a
-                  key={item.href}
-                  href={item.href}
-                  className="rounded-md px-3 py-2 text-stone-700 hover:bg-orange-50"
+                  href="#pricing"
                   onClick={() => setOpen(false)}
+                  className="rounded-md bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-2 text-white text-center"
                 >
-                  {item.label}
+                  Get Started
                 </a>
-              ))}
-              <a
-                href="#pricing"
-                onClick={() => setOpen(false)}
-                className="rounded-md bg-gradient-to-r from-orange-500 to-orange-600 px-3 py-2 text-white text-center"
-              >
-                Get Started
-              </a>
-            </div>
-          </div>
-        )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
